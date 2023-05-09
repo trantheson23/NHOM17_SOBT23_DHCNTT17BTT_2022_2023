@@ -1,0 +1,240 @@
+﻿﻿
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>SON_NGUYEN STORE | Đăng nhập</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/tpstore.css" />
+    <script src="../js/jquery-3.6.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/4f16de031d.js" crossorigin="anonymous"></script>
+    <script src="../js/tp.js"></script>
+    <style>
+        .ao-bg {
+            background: linear-gradient(rgb(0 0 0 / 0.67), rgb(0 0 0 / 0.76)), url('../img/footer/11.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+        }
+
+        #hero .container-fluid {
+            height: 50vh;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark shadow-5-strong navbar-fixed-top">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand text-center" href="index.html">SON_NGUYEN</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.html">TRANG CHỦ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html">VỀ CHÚNG TÔI</a>
+                    </li>
+                    <li class="nav-item active dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            DANH MỤC SẢN PHẨM
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="fullface.html">Mũ Full face</a></li>
+                            <li><a class="dropdown-item" href="mu3_4.html">Mũ 3/4 đầu</a></li>
+                            <li><a class="dropdown-item" href="#">MŨ nửa đầu</a></li>
+                            <li><a class="dropdown-item" href="#">Phụ kiện</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"></a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sitemap.html">SITEMAP</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item login-button" id="myButtonDN">
+                        <a class="nav-link" href="#" id="myButtonDN">ĐĂNG NHẬP</a>
+                    </li>
+                    <li class="nav-item register-button">
+                        <a class="nav-link" href="dangky.html">ĐĂNG KÝ</a>
+                    </li>
+                    <form class="navtimkiem pt-2">
+                        <input class="form-control me-2" type="search" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Tìm</button>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--AoBG-->
+    <section class="ao-bg" id="hero">
+        <div class="container-fluid">
+            <div class="text-center d-flex flex-column h-100 text-white justify-content-center">
+                <h1>ĐĂNG NHẬP</h1>
+            </div>
+        </div>
+    </section>
+    
+    <!--Dangnhap-->
+    <script>
+        $(document).ready(function(){
+            var i=2;
+            $("#myButtonDN").click(function(){
+                $("#myModalDN").modal();
+                function ktrasdt() {
+                    let sdt = $("#txtSDT").val();
+                    // let patten = /^\d{1,10}$/;
+                    let patten = /(^[0]{1})(\d{9})$/;
+                    if (patten.test(sdt)) {
+                        $("#ersdt").html("");
+                        $("#txtSDT").removeClass("is-invalid");
+                        $("#txtSDT").addClass("is-valid");
+                        return true;
+                    } else {
+                        $("#ersdt").html("Số điện thoại không hợp lệ");
+                        $("#txtSDT").addClass("is-invalid");
+                        return false;
+                    }
+                }
+                $("#txtSDT").blur(function (e) {
+                    ktrasdt();
+                });
+                //Kiem tra email
+                function kiemTraEmail() {
+                    let mail = $("#txtEmail").val();
+                    let patten = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                    if (patten.test(mail)) {
+                        $("#ermail").html("");
+                        $("#txtEmail").removeClass("is-invalid");
+                        $("#txtEmaill").addClass("is-valid");
+                        return true;
+                    } else {
+                        $("#ermail").html("Email không hợp lệ");
+                        $("#txtEmail").addClass("is-invalid");
+                        return false;
+                    }
+                }
+                $("#txtEmail").blur(function (e) {
+                    kiemTraEmail();
+                });
+                //Kiem tra mật khẩu
+                function kiemTraMK() {
+                    let pass = $("#txtMK").val();
+                    if (pass === "") {
+                        $("#erpass").html("Mật khẩu không được rỗng");
+                        $("#txtMK").addClass("is-invalid");
+                        return false;
+                    } else {
+                        $("#erpass").html("");
+                        $("#txtMK").removeClass("is-invalid");
+                        $("#txtMK").addClass("is-valid");
+                        return true;
+                    }
+                }
+                $("#txtMK").blur(function (e) {
+                    kiemTraMK();
+                });
+            });
+        });
+    
+    </script>
+     <!-- Modal đăng nhập -->
+    <div class="container">     
+        <!-- The Modal -->
+        <div class="modal fade" id="myModalDN" tabindex="-2" role="dialog">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title " style="font-weight: bolder ;font-size: xx-large; text-indent: 10rem;" >ĐĂNG NHẬP</h4>
+                <button type="button" class="close" data-dismiss="modal">&times; </button>
+              </div>
+              
+              <!-- Modal body -->
+              <div class="modal-body " style="padding: 3rem;">
+               
+
+                    <form class="needs-validation" id="frm-login" action="#" novalidate="novalidate">
+                        <div class="form-group ">
+                            <div class="row">
+                                <label for="login-username">Số điện thoại hoặc Email</label>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <input type="text" class="form-control is-invalid" id="txtSDT" id="txtEmail"  name="username" placeholder="Số điện thoại hoặc Email">
+                                <span id="ersdt" class="text-danger">Số điện thoại hoặc email không hợp lệ</span>
+                                <!-- <span id="ermail" class="text-danger">Email không hợp lệ</span> -->
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group position-relative">
+                            <div class="row">
+                                <label for="login-password">Mật khẩu</label>
+                            </div>
+                            <div class="row">
+                                <input type="text" class="form-control" id="txtMK" name="password" placeholder="Mật khẩu">
+                                <span id="erpass" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="clearfix mrgb10"></div>
+                        <div style="display: none" id="login-fail">
+                            <label class="color-red">Wrong phone number / email or password</label>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary btn-block btn-submit" >Đăng nhập</button>
+                        </div>
+                    </form>
+             
+                </div>
+                
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <div><label>Chưa có tài khoản?</label></div>
+                    <div>
+                        <a href="dangky.html" class="a-impress" data-dismiss="modal" data-toggle="modal" data-target="#signup-modal" data-backdrop="static">Tạo tài khoản mới</a>
+                    </div>
+                </div> 
+            </div>
+          </div>
+        </div>   
+    </div>
+    <!--Footer-->
+    <footer class="bg-white text-black pt-2 pb-5 background-footer">
+        <div class="container-fluid ">
+            <div class="row text-center text-md-start ">
+                <div class="col-md-4 col-lg-4 col-xl-4 mt-5 mx-auto">
+                    <h4 class="footer-h4">Bản đồ</h4>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.857562378329!2d106.68531071535645!3d10.822210561304878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528e5496d03cf%3A0xa5b8e7395ec636b9!2zMTIgTmd1eeG7hW4gVsSDbiBC4bqjbywgUGjGsOG7nW5nIDQsIEjhu5MgQ2jDrSBNaW5oLCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1649782621504!5m2!1svi!2s" width="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="col-md-4 col-lg-4 col-xl-4 mt-5 mx-auto">
+                    <h4 class="footer-h4">Giới thiệu</h4>
+                    <p>SON_NGUYEN Store thành lập năm 2023 với hai founder Thế Sơn và Trung Nguyên, cửa hàng bán các phụ kiện, mũ bảo hiểm, luôn nhận được sự tin tưởng từ người dùng</p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mt-5 mx-auto">
+                    <h4 class="footer-h4">Liên hệ</h4>
+                    <p>
+                        Địa chỉ: 12 Nguyễn Văn Bảo, P4, Gò Vấp
+                    </p>
+                    <p>
+                        Số điện thoại: 0912345678
+                    </p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mt-5 mx-auto">
+                    <h4 class="footer-h4">Social</h4>
+                    <ul class="list-unstyled footer-link social" style="list-style:none">
+                        <li><a href="https://www.facebook.com/profile.php?id=100037938923047" style="color: #000000"><i class="fa fa-facebook" aria-hidden="true"> Facebook</i></a></li>
+                        <li><a href="https://www.instagram.com/the.so_n/" style="color: #000000"><i class="fa fa-instagram" aria-hidden="true"> Instagram</i></a></li>
+                    </ul>
+                </div>
+            </div>
+    </footer>
+</body>
+</html>

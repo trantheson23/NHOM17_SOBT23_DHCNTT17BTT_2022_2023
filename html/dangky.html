@@ -1,0 +1,356 @@
+﻿﻿
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>SON_NGUYEN STORE | Đăng ký</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/tpstore.css" />
+    <script src="../js/jquery-3.6.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/4f16de031d.js" crossorigin="anonymous"></script>
+    <script src="../js/tp.js"></script>
+    <style>
+        .ao-bg {
+            background: linear-gradient(rgb(0 0 0 / 0.67), rgb(0 0 0 / 0.76)), url('../img/footer/5.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+        }
+
+        #hero .container-fluid {
+            height: 50vh;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark shadow-5-strong navbar-fixed-top">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand text-center" href="index.html">SON_NGUYEN</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.html">TRANG CHỦ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html">VỀ CHÚNG TÔI</a>
+                    </li>
+                    <li class="nav-item active dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            DANH MỤC SẢN PHẨM
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="fullface.html">Mũ Full face</a></li>
+                            <li><a class="dropdown-item" href="mu3_4.html">Mũ 3/4 đầu</a></li>
+                            <li><a class="dropdown-item" href="#">Mũ nửa đầu</a></li>
+                            <li><a class="dropdown-item" href="#">Phụ kiện</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sitemap.html">SITEMAP</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item login-button">
+                        <a class="nav-link" href="dangnhap.html">ĐĂNG NHẬP</a>
+                    </li>
+                    <li class="nav-item register-button" id="myButtonDK">
+                        <a class="nav-link" href="#" id="myButtonDK">ĐĂNG KÝ</a>
+                    </li>
+                    <form class="navtimkiem pt-2">
+                        <input class="form-control me-2" type="search" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Tìm</button>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--AoBG-->
+    <section class="ao-bg" id="hero">
+        <div class="container-fluid">
+            <div class="text-center d-flex flex-column h-100 text-white justify-content-center">
+                <h1>ĐĂNG KÝ</h1>
+            </div>
+        </div>
+    </section>
+    <!--Dangky-->
+    <!-- Modal đăng ký --> 
+    <script>
+        $(document).ready(function(){
+            var i=2;
+            
+            $("#myButtonDK").click(function(){
+                $("#myModalDK").modal();
+               
+                
+                //Kiem tra ho va ten
+                function kiemTraHT(){
+                    var kt = /(^[A-Z]{1})([a-z]+)(\s[A-Z]{1}([a-z]*))*$/;//dieu kien ho va ten
+                    if($("#txtTen").val() == ""){
+                        $("#tbTen").html("*Bắt buộc nhập lại!");
+                        $("#tbTen").addClass("mauDo");
+                        return false;
+                    }
+                    else if(!kt.test($("#txtTen").val())){
+                        $("#tbTen").html("*Chữ cái đầu tiên của mỗi từ phải viết hoa!! ");
+                        $("#tbTen").addClass("mauDo");
+                        return false;
+                    }
+                    else{
+                        $("#tbTen").html("*");
+                        return true;
+                    }
+                    alert(i);
+                };
+                $("#txtTen").blur(kiemTraHT);
+                //Kiem tra dia chi
+                function kiemTraDC(){
+                    var mauKT = /([A-Za-z0-9]{5,})(\s[A-Za-z0-9]*)/;//dieu kien dia chi
+                    if($("#txtDC").val() ==""){
+                        $("#tbDC").html("*Bắt buộc nhập");
+                        $("#tbDC").addClass("mauDo");
+                        return false;
+                    }
+                    else if(!mauKT.test($("#txtDC").val())){
+                        $("#tbDC").html("*Chữ cái đầu tiên của mỗi từ phải viết hoa!! ");
+                        $("#tbDC").addClass("mauDo");
+                        return false;
+                    }
+                    else{
+                        $("#tbDC").html("*");
+                        return true;
+                    }
+                }
+                $("#txtDC").blur(kiemTraDC);
+                //Kiem tra SDT
+                // function kiemTraSDT(){
+                //     var mauKT =/[0-9]{9}$/;
+                //     if(mauKT.test($("#txtSDT").val())==true){
+                //         alert("Bạn nhập đúng")
+                //         return true;
+                //     }else{
+                //         alert("Bạn nhập sai")
+                //         return false;
+                //     }                 
+                // }
+                // $("#txtSDT").blur(kiemTraSDT);
+                //Giới hạn 10 số
+                function ktrasdt() {
+                    let sdt = $("#txtSDT").val();
+                    // let patten = /^\d{1,10}$/;
+                    let patten = /(^[0]{1})(\d{9})$/;
+                    if (patten.test(sdt)) {
+                        $("#ersdt").html("");
+                        $("#txtSDT").removeClass("is-invalid");
+                        $("#txtSDT").addClass("is-valid");
+                        return true;
+                    } else {
+                        $("#ersdt").html("Số điện thoại không hợp lệ");
+                        $("#txtSDT").addClass("is-invalid");
+                        return false;
+                    }
+                }
+                $("#txtSDT").blur(function (e) {
+                    ktrasdt();
+                });
+                //Kiem tra email
+                function kiemTraEmail() {
+                    let mail = $("#txtEmail").val();
+                    let patten = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                    if (patten.test(mail)) {
+                        $("#ermail").html("");
+                        $("#txtEmail").removeClass("is-invalid");
+                        $("#txtEmaill").addClass("is-valid");
+                        return true;
+                    } else {
+                        $("#ermail").html("Email không hợp lệ");
+                        $("#txtEmail").addClass("is-invalid");
+                        return false;
+                    }
+                }
+                $("#txtEmail").blur(function (e) {
+                    kiemTraEmail();
+                });
+                //Kiem tra mật khẩu
+                function kiemTraMK() {
+                    let pass = $("#txtMK").val();
+                    if (pass === "") {
+                        $("#erpass").html("Mật khẩu không được rỗng");
+                        $("#txtMK").addClass("is-invalid");
+                        return false;
+                    } else {
+                        $("#erpass").html("");
+                        $("#txtMK").removeClass("is-invalid");
+                        $("#txtMK").addClass("is-valid");
+                        return true;
+                    }
+                }
+                $("#txtMK").blur(function (e) {
+                    kiemTraMK();
+                });
+                //Table Save
+                $("#btnSave").click(function() {
+                var ht = $("#txtHT").val();
+                var dc = $("#txtDC").val();
+                var sdt = $("#txtSDT").val();
+                var email= $("#txtEmail").val(); 
+                var mk = $("#txtMK").val();
+                var them = "<tr><td>" + (i++) + "</td><td>" + ht + "</td><td>" + dc + "</td><td>" + sdt + "</td><td>"
+                email + "</td><td>" + mk + "</td><td>" ;
+                $("table").append(them);
+                $("#myModal").modal("hide");
+                return true;
+            });
+            });
+        });
+    </script>
+     <div class="container">
+        <div class="modal fade" id="myModalDK" role="dialog" tabindex="-1" >
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content ">
+                    <div class="modal-header " style=" text-indent: 11rem;">
+                        <h5  style="font-weight: bolder ; font-size: xx-large">ĐĂNG KÝ</h5>
+                        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                    </div>
+                    <div class="modal-body">
+                        <form action="" class="form-control">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="">Họ tên:</label>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" id="txtTen" class="form-control" placeholder="Nhập họ tên" >
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <span id="tbTen">*</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="">Địa chỉ:</label>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" placeholder="Nhập địa chỉ" id="txtDC">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <span id="tbDC">*</span>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="">Số điện thoại: </label>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control is-invalid" placeholder="Nhập số điện thoại" id="txtSDT">
+                                    <span id="ersdt" class="text-danger">Số điện thoại không hợp lệ</span>
+                                </div>
+                            </div>
+                            <br>
+                             
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="">Email:</label>
+                                </div>
+                                <div class="col-sm-6">
+                                   <input type="email" class="form-control is-invalid" placeholder="Nhập email" id="txtEmail">
+                                   <span id="ermail" class="text-danger">Email không hợp lệ</span>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="">Mật khẩu:</label>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control"  placeholder="Nhập mật khẩu" id="txtMK">
+                                    <span id="erpass" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="">Ngày sinh:</label>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="date" class="form-control"  id="txtNS">
+                                </div>
+                            </div>
+                            
+                            <br>
+                            <div class="row text-center">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-3"><input type="button" value="Submit" id="btnSave" class="btn btn-block btn-success" ></div>
+                                <div class="col-sm-3"><input type="reset" value="Reset" class="btn btn-block btn-danger" ></div>
+                                <div class="col-sm-3"></div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+     </div> 
+
+     <!-- Table Save -->
+     <div class="row">
+        <div class="col-md-8">
+            <table class="table table-bordered table-light table-hover table-striped table-primary">
+                <tr>
+                    <th>HỌ TÊN</th>
+                    <th>ĐỊA CHỈ</th>
+                    <th>SỐ ĐIỆN THOẠI</th>
+                    <th>EMAIL</th>
+                    <th>MẬT KHẨU</th>
+                </tr>
+                <tr>
+                    <td>TRAN THE SON</td>
+                    <td>12 NGUYEN VAN BAO</td>
+                    <td>0123456789</td>
+                    <td>THESON23603@GMAIL.COM</td>
+                    <td>12345678</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!--Footer-->
+    <footer class="bg-white text-black pt-2 pb-5 background-footer">
+        <div class="container-fluid ">
+            <div class="row text-center text-md-start ">
+                <div class="col-md-4 col-lg-4 col-xl-4 mt-5 mx-auto">
+                    <h4 class="footer-h4">Bản đồ</h4>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.857562378329!2d106.68531071535645!3d10.822210561304878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528e5496d03cf%3A0xa5b8e7395ec636b9!2zMTIgTmd1eeG7hW4gVsSDbiBC4bqjbywgUGjGsOG7nW5nIDQsIEjhu5MgQ2jDrSBNaW5oLCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1649782621504!5m2!1svi!2s" width="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="col-md-4 col-lg-4 col-xl-4 mt-5 mx-auto">
+                    <h4 class="footer-h4">Giới thiệu</h4>
+                    <p>SON_NGUYEN Store thành lập năm 2023 với hai founder Thế Sơn và Trung Nguyên, cửa hàng bán các phụ kiện, mũ bảo hiểm, luôn nhận được sự tin tưởng từ người dùng</p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mt-5 mx-auto">
+                    <h4 class="footer-h4">Liên hệ</h4>
+                    <p>
+                        Địa chỉ: 12 Nguyễn Văn Bảo, P4, Gò Vấp
+                    </p>
+                    <p>
+                        Số điện thoại: 0912345678
+                    </p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mt-5 mx-auto">
+                    <h4 class="footer-h4">Social</h4>
+                    <ul class="list-unstyled footer-link social" style="list-style:none">
+                        <li><a href="https://www.facebook.com/profile.php?id=100037938923047" style="color: #000000"><i class="fa fa-facebook" aria-hidden="true"> Facebook</i></a></li>
+                        <li><a href="https://www.instagram.com/the.so_n/" style="color: #000000"><i class="fa fa-instagram" aria-hidden="true"> Instagram</i></a></li>
+                    </ul>
+                </div>
+            </div>
+    </footer>
+</body>
+</html>
